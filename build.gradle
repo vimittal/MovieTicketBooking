@@ -1,4 +1,5 @@
-subprojects {
+allprojects {
+	println "adfa"
     apply plugin: 'java'
     apply plugin: 'eclipse'
 
