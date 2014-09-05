@@ -2,7 +2,6 @@ package test.java.com.mtb.smsbooking;
 
 import static org.junit.Assert.assertEquals;
 import main.java.com.mtb.dataaccess.DataAccessInterface;
-import main.java.com.mtb.manager.BookingManager;
 import main.java.com.mtb.model.Show;
 import main.java.com.mtb.model.SimpleTheatre;
 import main.java.com.mtb.model.Theatre;
@@ -27,11 +26,10 @@ public class SMSBookingInterfaceTest {
 		show.setDate("03/09/14");
 		dataAccessInterface.addShow(show);
 		BookingService bookingService = new BookingService(dataAccessInterface);
-		BookingManager manager = new BookingManager(bookingService);
 		MessageParser messageParser = new MessageParser();
 		ResponseMessageGenerator responseMessageGenerator = new ResponseMessageGenerator();
 		smsBookingInterface = new SMSBookingInterface(messageParser,
-				responseMessageGenerator, manager);
+				responseMessageGenerator, bookingService);
 		// smsBookingInterface = Factory.getSmsBookingInterface();
 	}
 
@@ -54,7 +52,7 @@ public class SMSBookingInterfaceTest {
 
 		String initialBookingRequest = "init 3232 03/09/14 11am 49";
 		smsBookingInterface.bookTicket(initialBookingRequest);
-		String expectedResponse = "Failed! Show not available";
+		String expectedResponse = "Failed! Seats not available";
 
 		// when
 		String actualResponse = smsBookingInterface.bookTicket(request);

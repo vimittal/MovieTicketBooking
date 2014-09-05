@@ -8,21 +8,11 @@ public class SimpleTheatre implements Theatre {
 		this.totalSeats = totalSeats;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.mtb.main.model.Theatre#areSeatsAvailable(int)
-	 */
 	@Override
 	public boolean areSeatsAvailable(int seats) {
 		return bookedSeats + seats <= totalSeats;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.mtb.main.model.Theatre#book(int)
-	 */
 	@Override
 	public String[] book(int seats) {
 		String[] result = new String[seats];

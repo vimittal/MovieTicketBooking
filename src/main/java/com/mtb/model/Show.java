@@ -1,5 +1,7 @@
 package main.java.com.mtb.model;
 
+import main.java.com.mtb.exception.RequestCanNotBeProcessedException;
+
 public class Show {
 
 	private Theatre theatre;
@@ -14,8 +16,10 @@ public class Show {
 		return theatre.areSeatsAvailable(seats);
 	}
 
-	public String[] book(int seats) {
-		return theatre.book(seats);
+	public Ticket book(int seats) throws RequestCanNotBeProcessedException {
+		if (!areSeatsAvailable(seats))
+			throw new RequestCanNotBeProcessedException("Seats not available");
+		return new Ticket(this, theatre.book(seats));
 	}
 
 	public String getDate() {

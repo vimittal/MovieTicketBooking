@@ -1,7 +1,6 @@
 package main.java.com.mtb.factory;
 
 import main.java.com.mtb.dataaccess.DataAccessInterface;
-import main.java.com.mtb.manager.BookingManager;
 import main.java.com.mtb.model.Show;
 import main.java.com.mtb.model.SimpleTheatre;
 import main.java.com.mtb.service.BookingService;
@@ -38,11 +37,10 @@ public class Factory {
 		dataAccessInterface.addShow(show);
 
 		BookingService bookingService = new BookingService(dataAccessInterface);
-		BookingManager manager = new BookingManager(bookingService);
 		MessageParser messageParser = new MessageParser();
 		ResponseMessageGenerator responseMessageGenerator = new ResponseMessageGenerator();
 		smsBookingInterface = new SMSBookingInterface(messageParser,
-				responseMessageGenerator, manager);
+				responseMessageGenerator, bookingService);
 	}
 
 	public static SMSBookingInterface getSmsBookingInterface() {
