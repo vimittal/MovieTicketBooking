@@ -31,7 +31,7 @@ public class Show {
 	}
 
 	public boolean equals(String date, String time) {
-		return date.equals(date) && time.equals(time);
+		return this.date.equals(date) && this.time.equals(time);
 	}
 
 	public void setTime(String time) {

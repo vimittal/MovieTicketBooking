@@ -28,7 +28,7 @@ public class DataAccessInterface {
 				foundShow = show;
 		}
 		if (foundShow == null)
-			throw new RequestCanNotBeProcessedException("Show not available.");
+			throw new RequestCanNotBeProcessedException("Show not available");
 		return foundShow;
 	}
 

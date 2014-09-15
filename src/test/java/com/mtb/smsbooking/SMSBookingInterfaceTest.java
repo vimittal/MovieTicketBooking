@@ -90,4 +90,18 @@ public class SMSBookingInterfaceTest {
 		assertEquals(expectedResponse, actualResponse);
 	}
 
+	@Test
+	public void shouldReturnShowNotAvailable() {
+		// given
+		String request = "Vipul 999 03/09/15 11am 2";
+
+		String expectedResponse = "Failed! Show not available";
+
+		// when
+		String actualResponse = smsBookingInterface.bookTicket(request);
+
+		// then
+		assertEquals(expectedResponse, actualResponse);
+	}
+
 }
